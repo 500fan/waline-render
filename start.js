@@ -9,6 +9,9 @@ function patchComment() {
   const commentPath = path.join(__dirname, 'node_modules/@waline/vercel/src/controller/comment.js');
 
   const simplifiedController = `const BaseRest = require('./rest.js');
+const { getMarkdownParser } = require('../service/markdown/index.js');
+
+const markdownParser = getMarkdownParser();
 
 module.exports = class extends BaseRest {
   constructor(ctx) {
@@ -38,6 +41,7 @@ module.exports = class extends BaseRest {
         pageSize,
         count: count - spamCount - waitingCount,
         data: comments.map(c => {
+          c.comment = markdownParser(c.comment);
           c.time = new Date(c.insertedAt).getTime();
           delete c.insertedAt;
           delete c.createdAt;
@@ -96,7 +100,7 @@ module.exports = class extends BaseRest {
 `;
 
   fs.writeFileSync(commentPath, simplifiedController);
-  console.log('[start.js] Replaced comment controller with simplified version');
+  console.log('[start.js] Replaced comment controller with simplified version (with markdown)');
 }
 
 // ========== Patch 2: Use Cloudinary direct upload for images ==========
