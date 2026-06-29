@@ -1,0 +1,2 @@
+id,objectId,display_name,email,password,type,url,avatar,label,github,twitter,facebook,google,weibo,qq,oidc,createdAt,updatedAt
+u001,,admin,392637221@qq.com,$2a$08$8AKEfdCurJ6761lyVtsWC.Y5gaSB1ZNKNjd8oHRtTo1zT57yrJ/IW,administrator,,,,,,,2026-05-18,2026-05-18

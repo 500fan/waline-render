@@ -1,0 +1,12 @@
+{
+  "name": "waline-render",
+  "version": "1.0.084133",
+  "private": true,
+  "scripts": {
+    "postinstall": "node patch.js",
+    "start": "node start.js"
+  },
+  "dependencies": {
+    "@waline/vercel": "^1.0.0"
+  }
+}
