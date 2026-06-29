@@ -134,7 +134,7 @@ function patchIndexForCloudinary() {
             });
             const result = await resp.json();
             if (result.error) throw new Error(result.error.message);
-            return '![](' + result.secure_url + ')';
+            return result.secure_url;
           },`;
 
   if (code.includes(oldInit)) {
